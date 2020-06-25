@@ -20,14 +20,101 @@
     <header class="jumbotron">
         <h1 class="display-3">Work Day Scheduler</h1>
         <p class="lead">A simple calendar app for scheduling your work day</p>
-        <label id="now"></label>
+        <label for="currentDay" id="now"></label>
     </header>
     <div class="container">
         <!--Timeblocks go here-->
-        <textarea id="event" name="textarea"
-            rows="5" cols="33" placeholder="Description"><input type="submit" id="save" class="button" value="save"></textarea>
-            
-       
+        <!--Row 1-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry1" class="pt-3 pr-1 hour">09 am</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry1"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn1"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+        <!--Row 2-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry2" class="pt-3 pr-1 hour">10 am</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry2"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn2"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+        <!--Row 3-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry3" class="pt-3 pr-1 hour">11 am</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry3"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn3"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+        <!--Row 4-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry4" class="pt-3 pr-1 hour">12 am</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry4"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn4"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+        <!--Row 5-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry5" class="pt-3 pr-1 hour">1 pm</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry5"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn5"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+        <!--Row 6-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry6" class="pt-3 pr-1 hour">2 pm</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry6"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn6"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+        <!--Row 7-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry7" class="pt-3 pr-1 hour">3 pm</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry7"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn7"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+        <!--Row 8-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry8" class="pt-3 pr-1 hour">4 pm</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry8"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn8"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+        <!--Row 9-->
+        <div class="input-group row timeblock">
+            <div class="input-group-prepend">
+                <label for="tAentry9" class="pt-3 pr-1 hour">5 pm</label>
+            </div>
+            <textarea class="form-control text-area" id="tAentry9"  cols="50"></textarea>
+            <div class="input-group-append"> 
+                <button type="submit" class="btn btn-primary btn-lg ml-0 pt-3 pb-3 saveBtn" id="btn9"><span class="fas fa-archive"></span></button>
+            </div>
+        </div>
+    
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
