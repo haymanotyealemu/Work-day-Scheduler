@@ -123,10 +123,11 @@
         eventList=[]; //holds the eventlist that's read from the storage or will be dumped to storage
 
 		$(document).ready(function () {
-            function init(){
-                let m= moment();
+    
+            let m= moment();
                 $("#now").text(m.format("llll"));
-                eventList=JSON.parse(localStorage.getItem("plan"));
+            function init(){
+                eventList=JSON.parse(localStorage.getItem("Dailyplan"));
                 if(eventList!=null){
                     for(var i=0; i<eventList.length;i++){
                     find(eventList[i]);
@@ -136,7 +137,7 @@
             }
             
      
-            ////updates the page, makes it color coded. Grey-->past, Red-->present and Green-->future
+            ////updates the page, makes it color coded. Grey for past, Red for present and Green for future
             function updatecolor(){
                 var hour = moment().format("h A"); // 12-hour time digit (1-12)
                 var minute=moment().minutes();
@@ -162,7 +163,7 @@
                
                 
             }
-
+            // when a save button is clicked the current event will be fired up to local
             function storeEvents(event){
                 event.preventDefault();
                 var events={
@@ -182,6 +183,28 @@
                                     }
                             }
                 });
+            }
+            // when an event is updated on the same date and time, this function is called
+            function isPresent(){
+                // grab the events object from local stotage and convert it to object format.
+                eventList=JSON.parse(localStorage.getItem("Dailyplan")); 
+                if (eventList==null){
+                    if(events. eventDesc!==""){
+                        eventList=[];
+                        eventList.push(events);
+                    }
+                }
+                else{
+                    for(var i=0; i<eventList.length;i++){
+                        if(eventList[i].date===events.date){
+                            if(eventList[i].time==events.time){
+                                if(events.eventDesc==""){
+                                    eventList.splice(i,1);
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
         });
