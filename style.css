@@ -14,13 +14,14 @@ body {
     width:100vw;
     
   }
+ 
   
   .jumbotron {
     text-align: center;
-    background-color: transparent;
+    background-color:  #ecf5ff;
     color: black;
     border-radius: 0;
-    border-bottom: 10px solid black;
+    border-bottom: 5px solid black;
   }
   
   .description{
@@ -39,7 +40,7 @@ body {
   }
   
   .hour {
-    background-color: #ffffff;
+    background-color: #ffff;
     color: #000000;
     border-top: 1px dashed #000000;
   }
