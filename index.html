@@ -123,8 +123,19 @@
         eventList=[]; //holds the eventlist that's read from the storage or will be dumped to storage
 
 		$(document).ready(function () {
-            let m= moment();
-            $("#now").text(m.format("llll"));
+            function init(){
+                let m= moment();
+                $("#now").text(m.format("llll"));
+                eventList=JSON.parse(localStorage.getItem("plan"));
+                if(eventList!=null){
+                    for(var i=0; i<eventList.length;i++){
+                    find(eventList[i]);
+                        }
+                }
+                updatecolor();
+            }
+            
+     
             ////updates the page, makes it color coded. Grey-->past, Red-->present and Green-->future
             function updatecolor(){
                 var hour = moment().format("h A"); // 12-hour time digit (1-12)
@@ -137,13 +148,41 @@
                         $("#tAentry"+key).attr("disabled",false);
                         $("#btn"+key).attr("disabled",false);
                     }
-                })
+                    else if(moment(value,"h A").isAfter(moment(hour,"h A"))){
+                        $("#tAentry"+key).addClass("past");
+                        $("#tAentry"+key).attr("disabled",true);
+                        $("#btn"+key).attr("disabled",true);
+                    }
+                    else if(moment(value,"h A").isBefore(moment(hour,"h A"))){
+                        $("#tAentry"+key).addClass("future");
+                        $("#tAentry"+key).attr("disabled",false);
+                        $("#btn"+key).attr("disabled",false);
+                    }
+                });
                
                 
             }
-           
-            
-            
+
+            function storeEvents(event){
+                event.preventDefault();
+                var events={
+                    time :"",
+                    date:"",
+                    eventDesc:"",
+                };
+            }
+            // this function take the event object and compare it with the date and time of the DOM, and update the textarea based on the result.
+            function find(eventlist){
+                $.each($(".hour"),function(key,h){
+                    var value=$(h).text(); //grap the time from the DOM.
+                    if(eventlist.date===m.format("llll")){
+                                if(eventlist.time==value)
+                                    {$("#tAentry"+key).text(eventlist.eventDesc);
+                                    return;
+                                    }
+                            }
+                });
+            }
 
         });
     </script>
