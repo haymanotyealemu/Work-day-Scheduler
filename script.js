@@ -1,9 +1,12 @@
-eventList=[]; //holds the eventlist that's read from the storage or will be dumped to storage
 
 		$(document).ready(function () {
-    
-            function init(){
+            //holds the eventlist that's read from the storage or will be dumped to storage
+            eventList=[]; 
+
+            function starter(){
+                // Display the Today's Date at the top of the page.
                 $("#now").text(moment().format('dddd,MMMM Do'));
+                //et schedule object from the local storage and parse it.
                 eventList=JSON.parse(localStorage.getItem("Dailyplan"));
                 if(eventList!=null){
                     for(var i=0; i<eventList.length;i++){
@@ -14,7 +17,7 @@ eventList=[]; //holds the eventlist that's read from the storage or will be dump
             }
             
      
-            ////updates the page, makes it color coded. Grey for past, Red for present and Green for future
+            //updates the page, makes it color coded. Grey for past, Red for present and Green for future
             function updatecolor(){
                 // store the current time of the day in a variable called hour.
                 var hour = moment().format("h a"); // 12-hour time digit (1-12) & a stands for (am pm).
@@ -53,7 +56,7 @@ eventList=[]; //holds the eventlist that's read from the storage or will be dump
                
                 
             }
-            // when a save button is clicked the current event will be fired up to local
+            // when a save button is clicked the current event will be fired up to local to be stored.
             function storeEvents(event){
                 event.preventDefault();
                 var events={
@@ -65,28 +68,36 @@ eventList=[]; //holds the eventlist that's read from the storage or will be dump
 
                 // when an event is updated on the same date and time, this function is called
                 function isPresent(){
-                // grab the events object from local stotage and convert it to object format.
+                // grab the events object from local stotage and convert it to object variable.
                     eventList=JSON.parse(localStorage.getItem("Dailyplan")); 
+                    //if there are no previous event.
                     if (eventList==null){
+    
                         if(events. eventDesc!==""){
                         eventList=[];
+                        // push the event object to the array.
                         eventList.push(events);
                         }
                     }
-                    else{
-                            for(var i=0; i<eventList.length;i++){
+                    else{// if there are previous events in the storage
+                            for(var i=0; i<eventList.length;i++){  //if the new event is on the same date as one of events in the object array in the local storage
                                 if(eventList[i].date===events.date){
+                                    //compare time
                                     if(eventList[i].time==events.time){
+                                        // if the user deleted the event
                                         if(events.eventDesc==""){
+                                            // the event will be deleted from the storage since the user do so.
                                             eventList.splice(i,1);
                                         }
-                                    else{
-                                    eventList[i].eventDesc=events.eventDesc;
+                                        //update the event eventually in local storage.
+                                        else{
+                                            eventList[i].eventDesc=events.eventDesc;
                                         }
-                                    return 0;
+                                        return 0;
                                     } 
                                 }
                             }
+                            //the preveious event should belong to another time or date.
                             return 1;
                         }
                 
@@ -106,6 +117,7 @@ eventList=[]; //holds the eventlist that's read from the storage or will be dump
                 events.date=moment().format('dddd,MMMM Do');
                 if (isPresent()>0){
                     if(events.eventDesc!==""){
+                        // push the new event to event lists
                         eventList.push(events);
 
                     }
@@ -113,15 +125,13 @@ eventList=[]; //holds the eventlist that's read from the storage or will be dump
                         return;
                     }
                 }
+                //store the all the events both the old one and the new one to storage.
                 if (eventList.length!=0){
                     localStorage.setItem("Dailyplan",JSON.stringify(eventList));
                 }
                 else{
                     localStorage.setItem("Dailyplan",null);
                 }
-
-
-
 
             }
             // this function take the event object and compare it with the date and time of the DOM, and update the textarea based on the result.
@@ -136,7 +146,9 @@ eventList=[]; //holds the eventlist that's read from the storage or will be dump
                             }
                 });
             }
-            $(window).on('load',init);
+            // the window is loaded "starter" function is fired  up
+            $(window).on('load',starter);
+            // when a save button is clicked "storeEvents" function is fired up  
             $(".btn").on('click',storeEvents);
            
 
