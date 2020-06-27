@@ -67,7 +67,7 @@
 
 
                 // when an event is updated on the same date and time, this function is called
-                function isPresent(){
+                function multipleEvent(){
                 // grab the events object from local stotage and convert it to object variable.
                     eventList=JSON.parse(localStorage.getItem("Dailyplan")); 
                     //if there are no previous event.
@@ -115,7 +115,7 @@
                 events.eventDesc=$("textarea#tAentry"+id).val();
                 events.time=$("label[for='tAentry"+id+"']").text();
                 events.date=moment().format('dddd,MMMM Do');
-                if (isPresent()>0){
+                if (multipleEvent()>0){
                     if(events.eventDesc!==""){
                         // push the new event to event lists
                         eventList.push(events);
