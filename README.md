@@ -12,6 +12,7 @@ The work-day scheduler application is a simple daily calendar developed using th
 * If we delete an event and press the submit button and refresh, the page and the local storage will be updated.
 * the following url run the application 
  https://haymanotyealemu.github.io/Work-day-Scheduler/
+ ![work day calander](https://user-images.githubusercontent.com/43423292/85935164-9d8ed480-b8bb-11ea-9ece-8cecb2f791b3.PNG)
  
 
 
